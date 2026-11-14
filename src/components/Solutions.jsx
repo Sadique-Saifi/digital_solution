@@ -5,6 +5,7 @@ const solutions = [
   {
     icon: GraduationCap,
     title: 'Education & Coaching Institutes',
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80',
     description:
       'Streamline student management and boost admissions with smart digital tools built for educational institutions.',
     items: [
@@ -20,6 +21,7 @@ const solutions = [
   {
     icon: Building2,
     title: 'Real Estate Agencies',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
     description:
       'Manage properties, track leads, and automate customer follow-ups with purpose-built real estate technology.',
     items: [
@@ -35,6 +37,7 @@ const solutions = [
   {
     icon: ShoppingBag,
     title: 'Retail & E-commerce',
+    image: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=80',
     description:
       'Take your products online, manage inventory efficiently, and gain insights from your sales data.',
     items: [
@@ -50,6 +53,7 @@ const solutions = [
   {
     icon: Briefcase,
     title: 'Service-Based Businesses',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
     description:
       'Build a strong online presence, manage appointments, and handle customer relationships effortlessly.',
     items: [
@@ -69,11 +73,12 @@ function SolutionCard({ solution, index }) {
 
   return (
     <div
-      className="animate-on-scroll group relative rounded-2xl p-6 lg:p-8 transition-all duration-300"
+      className="animate-on-scroll group relative rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
       style={{
         transitionDelay: `${index * 80}ms`,
-        background: solution.bg,
+        background: 'rgba(16, 26, 46, 0.6)',
         border: `1px solid ${solution.border}`,
+        backdropFilter: 'blur(16px)',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'translateY(-5px)'
@@ -86,34 +91,50 @@ function SolutionCard({ solution, index }) {
         e.currentTarget.style.borderColor = solution.border
       }}
     >
-      {/* Icon */}
-      <div
-        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
-        style={{ background: `${solution.color}15`, border: `1px solid ${solution.color}30` }}
-      >
-        <Icon className="w-7 h-7" style={{ color: solution.color }} strokeWidth={1.5} />
+      {/* Realistic Industry Photography Banner */}
+      <div className="relative h-44 w-full overflow-hidden">
+        <img
+          src={solution.image}
+          alt={solution.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#101A2E] via-[#101A2E]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#101A2E]/80 via-transparent to-transparent" />
+
+        {/* Floating icon badge */}
+        <div
+          className="absolute bottom-3 left-6 w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 shadow-md ring-1 ring-white/10"
+          style={{ background: `${solution.color}25`, border: `1px solid ${solution.color}40`, backdropFilter: 'blur(8px)' }}
+        >
+          <Icon className="w-6 h-6" style={{ color: solution.color }} strokeWidth={1.8} />
+        </div>
       </div>
 
-      {/* Title */}
-      <h3 className="text-lg font-bold text-text-primary mb-2">{solution.title}</h3>
+      <div className="p-6 lg:p-7 pt-2 flex flex-col flex-1 justify-between">
+        <div>
+          {/* Title */}
+          <h3 className="text-lg font-bold text-text-primary mb-2">{solution.title}</h3>
 
-      {/* Description */}
-      <p className="text-sm text-text-secondary leading-relaxed mb-5">{solution.description}</p>
+          {/* Description */}
+          <p className="text-sm text-text-secondary leading-relaxed mb-5">{solution.description}</p>
 
-      {/* Solution items */}
-      <ul className="space-y-2.5">
-        {solution.items.map((item) => (
-          <li key={item.label} className="flex items-center gap-3">
-            <div
-              className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 text-sm"
-              style={{ background: `${solution.color}10` }}
-            >
-              {item.icon}
-            </div>
-            <span className="text-sm font-medium text-text-secondary">{item.label}</span>
-          </li>
-        ))}
-      </ul>
+          {/* Solution items */}
+          <ul className="space-y-2.5">
+            {solution.items.map((item) => (
+              <li key={item.label} className="flex items-center gap-3">
+                <div
+                  className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 text-xs"
+                  style={{ background: `${solution.color}15` }}
+                >
+                  {item.icon}
+                </div>
+                <span className="text-sm font-medium text-text-secondary">{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
       {/* Hover accent line bottom */}
       <div

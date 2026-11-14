@@ -8,17 +8,25 @@ export default function CTA() {
     >
       {/* Background */}
       <div className="absolute inset-0" aria-hidden="true">
-        {/* Base */}
+        {/* Realistic Enterprise Technology Hub Backdrop */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-[0.08] mix-blend-luminosity scale-105"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2000&q=80')`,
+          }}
+        />
+
+        {/* Base Gradient */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(8,13,26,0) 50%, rgba(56,189,248,0.12) 100%)',
+            background: 'linear-gradient(135deg, rgba(99,102,241,0.18) 0%, rgba(8,13,26,0.85) 50%, rgba(56,189,248,0.15) 100%)',
           }}
         />
 
         {/* Grid overlay */}
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-25"
           style={{
             backgroundImage: 'linear-gradient(rgba(99,102,241,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.08) 1px, transparent 1px)',
             backgroundSize: '50px 50px',
@@ -43,7 +51,7 @@ export default function CTA() {
           }}
         />
 
-        {/* Decorative orbs */}
+        {/* Decorative pulses */}
         <div
           className="absolute top-8 left-1/4 w-2 h-2 rounded-full bg-accent-indigo animate-pulse"
           style={{ animationDelay: '0s' }}

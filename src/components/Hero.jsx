@@ -41,7 +41,9 @@ function HeroDashboardVisual() {
           <div className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
           <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/70" />
           <div className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
-          <span className="ml-2 text-xs text-text-secondary font-mono">{siteConfig.agencyName.toLowerCase().replace(/[^a-z0-9]/g, '')}.dashboard</span>
+          <span className="ml-2 text-xs text-text-secondary font-mono">
+            {siteConfig.agencyName.toLowerCase().replace(/[^a-z0-9]/g, '')}.dashboard
+          </span>
         </div>
 
         <div className="p-4 space-y-3">
@@ -113,30 +115,29 @@ function HeroDashboardVisual() {
 
       {/* Floating card: Website preview */}
       <FloatingCard
-        className="-top-4 -left-4 sm:-left-12 w-44"
+        className="-top-4 -left-4 sm:-left-12 w-48 overflow-hidden"
         delay="0s"
       >
+        <div className="relative h-16 -mx-3 -mt-3 mb-2 overflow-hidden rounded-t-xl">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80"
+            alt="Web Solution Preview"
+            className="w-full h-full object-cover opacity-80"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-secondary via-transparent to-transparent" />
+        </div>
         <div className="flex items-center gap-2 mb-2">
-          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-accent-indigo to-accent-sky flex items-center justify-center">
-            <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-5 h-5 rounded-md bg-gradient-to-br from-accent-indigo to-accent-sky flex items-center justify-center">
+            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
           <span className="text-xs font-semibold text-text-primary">Website Live</span>
         </div>
-        <div className="flex gap-1 mb-1.5">
-          {['bg-accent-indigo/40', 'bg-accent-sky/30'].map((c, i) => (
-            <div key={i} className={`h-1.5 rounded-full ${c} ${i === 0 ? 'flex-1' : 'w-8'}`} />
-          ))}
-        </div>
-        <div className="flex gap-1">
-          {['bg-white/10', 'bg-white/5', 'bg-white/8'].map((c, i) => (
-            <div key={i} className={`h-1 rounded-full ${c} flex-1`} />
-          ))}
-        </div>
-        <div className="mt-2 flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          <span className="text-[10px] text-green-400">Published</span>
+          <span className="text-[10px] text-green-400">Deployed & Optimized</span>
         </div>
       </FloatingCard>
 
@@ -153,7 +154,7 @@ function HeroDashboardVisual() {
           </div>
           <div>
             <p className="text-xs font-semibold text-text-primary">New Enquiry</p>
-            <p className="text-[10px] text-text-secondary mt-0.5">"I need a website for my business..."</p>
+            <p className="text-[10px] text-text-secondary mt-0.5">"I need an AI automation setup..."</p>
             <p className="text-[10px] text-accent-sky mt-1 font-medium">Just now • WhatsApp</p>
           </div>
         </div>
@@ -247,12 +248,20 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden"
     >
-      {/* Background */}
+      {/* Enterprise Background with realistic picture and gradients */}
       <div className="absolute inset-0" aria-hidden="true">
-        {/* Grid */}
-        <div className="absolute inset-0 hero-grid-bg opacity-60" />
+        {/* Realistic Enterprise Cloud / Tech Infrastructure Backdrop */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-[0.09] mix-blend-luminosity scale-105"
+          style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2000&q=80')`,
+          }}
+        />
 
-        {/* Primary orb */}
+        {/* Tech Grid Overlay */}
+        <div className="absolute inset-0 hero-grid-bg opacity-50" />
+
+        {/* Primary ambient light orb */}
         <div
           className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full opacity-20"
           style={{
@@ -262,7 +271,7 @@ export default function Hero() {
           }}
         />
 
-        {/* Secondary orb */}
+        {/* Secondary ambient light orb */}
         <div
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-15"
           style={{
@@ -272,13 +281,13 @@ export default function Hero() {
           }}
         />
 
-        {/* Top gradient */}
+        {/* Top gradient fade */}
         <div
           className="absolute top-0 inset-x-0 h-32"
           style={{ background: 'linear-gradient(to bottom, rgba(8,13,26,1) 0%, transparent 100%)' }}
         />
 
-        {/* Bottom gradient */}
+        {/* Bottom gradient fade */}
         <div
           className="absolute bottom-0 inset-x-0 h-32"
           style={{ background: 'linear-gradient(to top, rgba(8,13,26,1) 0%, transparent 100%)' }}

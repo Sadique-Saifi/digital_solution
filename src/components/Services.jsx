@@ -8,6 +8,7 @@ const services = [
     title: 'Website Development & Design',
     description:
       'Professional, responsive, and high-performing websites that make your business stand out online.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
     features: [
       'Business Websites',
       'Landing Pages',
@@ -25,6 +26,7 @@ const services = [
     title: 'AI & Business Automation',
     description:
       'Reduce repetitive work and improve productivity with intelligent automation and AI-powered solutions.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=800&q=80',
     features: [
       'AI Chatbot Integration',
       'Workflow Automation',
@@ -42,6 +44,7 @@ const services = [
     title: 'Custom Software & Business Solutions',
     description:
       'Custom digital applications designed to simplify your business processes and daily operations.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
     features: [
       'CRM Systems',
       'Inventory Management',
@@ -59,6 +62,7 @@ const services = [
     title: 'Data Analytics & Dashboards',
     description:
       'Turn business data into meaningful insights using interactive dashboards and automated reporting.',
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80',
     features: [
       'Power BI Dashboards',
       'Sales Analytics',
@@ -78,77 +82,100 @@ function ServiceCard({ service, index }) {
 
   return (
     <div
-      className="animate-on-scroll group relative rounded-2xl p-6 lg:p-7 transition-all duration-300 cursor-default"
+      className="animate-on-scroll group relative rounded-2xl overflow-hidden transition-all duration-300 cursor-default flex flex-col justify-between"
       style={{
         transitionDelay: `${index * 80}ms`,
-        background: 'rgba(16, 26, 46, 0.5)',
-        border: '1px solid rgba(99, 102, 241, 0.12)',
-        backdropFilter: 'blur(12px)',
+        background: 'rgba(16, 26, 46, 0.65)',
+        border: '1px solid rgba(99, 102, 241, 0.15)',
+        backdropFilter: 'blur(16px)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = `${service.accent}40`
-        e.currentTarget.style.boxShadow = `0 8px 48px ${service.glow}, 0 0 0 1px ${service.accent}20`
+        e.currentTarget.style.borderColor = `${service.accent}50`
+        e.currentTarget.style.boxShadow = `0 12px 48px ${service.glow}, 0 0 0 1px ${service.accent}30`
         e.currentTarget.style.transform = 'translateY(-4px)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'rgba(99, 102, 241, 0.12)'
+        e.currentTarget.style.borderColor = 'rgba(99, 102, 241, 0.15)'
         e.currentTarget.style.boxShadow = 'none'
         e.currentTarget.style.transform = 'translateY(0)'
       }}
     >
-      {/* Top glow on hover */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: `linear-gradient(90deg, transparent, ${service.accent}60, transparent)` }}
-        aria-hidden="true"
-      />
+      {/* Top Image Banner */}
+      <div className="relative h-40 w-full overflow-hidden">
+        <img
+          src={service.image}
+          alt={service.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+        {/* Dark enterprise gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#101A2E] via-[#101A2E]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#101A2E]/80 via-transparent to-transparent" />
 
-      {/* Icon */}
-      <div className="flex items-start gap-4 mb-4">
-        <div
-          className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br ${service.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
-        >
-          <Icon className="w-6 h-6 text-white" strokeWidth={1.5} />
-        </div>
-        <div>
-          <h3 className="text-base font-bold text-text-primary leading-tight">{service.title}</h3>
+        {/* Icon Floating on Image */}
+        <div className="absolute bottom-3 left-6">
+          <div
+            className={`w-11 h-11 rounded-xl flex items-center justify-center bg-gradient-to-br ${service.gradient} shadow-lg ring-2 ring-white/10 group-hover:scale-110 transition-transform duration-300`}
+          >
+            <Icon className="w-5 h-5 text-white" strokeWidth={1.8} />
+          </div>
         </div>
       </div>
 
-      {/* Description */}
-      <p className="text-sm text-text-secondary leading-relaxed mb-5">{service.description}</p>
+      <div className="p-6 lg:p-7 pt-2 flex flex-col flex-1 justify-between">
+        <div>
+          {/* Title */}
+          <h3 className="text-base font-bold text-text-primary leading-tight mb-2.5">
+            {service.title}
+          </h3>
 
-      {/* Feature list */}
-      <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
-        {service.features.map((f) => (
-          <FeatureItem key={f}>{f}</FeatureItem>
-        ))}
-      </ul>
+          {/* Description */}
+          <p className="text-sm text-text-secondary leading-relaxed mb-5">
+            {service.description}
+          </p>
 
-      {/* CTA */}
-      <button
-        onClick={openGoogleForm}
-        className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold transition-all duration-200 group/btn"
-        style={{ color: service.accent }}
-        aria-label={`Learn more about ${service.title}`}
-      >
-        Get Started
-        <svg
-          className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform duration-200"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+          {/* Feature list */}
+          <ul className="grid grid-cols-2 gap-x-3 gap-y-2 mb-6">
+            {service.features.map((f) => (
+              <FeatureItem key={f}>{f}</FeatureItem>
+            ))}
+          </ul>
+        </div>
+
+        {/* CTA */}
+        <button
+          onClick={openGoogleForm}
+          className="inline-flex items-center gap-1.5 text-xs font-semibold transition-all duration-200 group/btn pt-3 border-t border-white/5"
+          style={{ color: service.accent }}
+          aria-label={`Learn more about ${service.title}`}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </button>
+          Get Started
+          <svg
+            className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </button>
+      </div>
     </div>
   )
 }
 
 export default function Services() {
   return (
-    <Section id="services" className="bg-bg-secondary/30">
+    <Section id="services" className="bg-bg-secondary/40 relative">
+      {/* Subtle enterprise network background texture */}
+      <div
+        className="absolute inset-0 opacity-[0.05] mix-blend-luminosity bg-cover bg-center pointer-events-none"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=2000&q=80')`,
+        }}
+        aria-hidden="true"
+      />
+
       <BackgroundOrbs />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader

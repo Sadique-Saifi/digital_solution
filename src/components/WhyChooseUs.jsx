@@ -61,18 +61,19 @@ function BenefitCard({ benefit, index }) {
       className="animate-on-scroll group relative rounded-2xl p-6 transition-all duration-300"
       style={{
         transitionDelay: `${index * 70}ms`,
-        background: 'rgba(16, 26, 46, 0.4)',
-        border: '1px solid rgba(255, 255, 255, 0.05)',
+        background: 'rgba(16, 26, 46, 0.5)',
+        border: '1px solid rgba(255, 255, 255, 0.06)',
+        backdropFilter: 'blur(12px)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.background = 'rgba(16, 26, 46, 0.7)'
-        e.currentTarget.style.borderColor = `${benefit.color}30`
+        e.currentTarget.style.background = 'rgba(16, 26, 46, 0.75)'
+        e.currentTarget.style.borderColor = `${benefit.color}40`
         e.currentTarget.style.transform = 'translateY(-3px)'
         e.currentTarget.style.boxShadow = `0 8px 40px ${benefit.color}15`
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.background = 'rgba(16, 26, 46, 0.4)'
-        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)'
+        e.currentTarget.style.background = 'rgba(16, 26, 46, 0.5)'
+        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.06)'
         e.currentTarget.style.transform = 'translateY(0)'
         e.currentTarget.style.boxShadow = 'none'
       }}
@@ -109,11 +110,11 @@ function BenefitCard({ benefit, index }) {
 
 export default function WhyChooseUs() {
   return (
-    <Section id="why-us" className="bg-bg-secondary/20">
+    <Section id="why-us" className="bg-bg-secondary/20 relative">
       <BackgroundOrbs />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left column: Header */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left column: Header & Realistic Enterprise Engineering Photo Card */}
           <div>
             <SectionHeader
               badge="WHY PARTNER WITH US"
@@ -123,26 +124,46 @@ export default function WhyChooseUs() {
               className="mb-8"
             />
 
-            {/* Visual accent element */}
+            {/* Realistic Enterprise Engineering Team Showcase Card */}
             <div
-              className="animate-on-scroll rounded-2xl p-6 mt-8"
+              className="animate-on-scroll rounded-2xl overflow-hidden mt-8 relative"
               style={{
-                background: 'rgba(99,102,241,0.06)',
-                border: '1px solid rgba(99,102,241,0.15)',
+                background: 'rgba(16, 26, 46, 0.65)',
+                border: '1px solid rgba(99,102,241,0.2)',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.3)',
               }}
             >
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-indigo to-accent-sky flex items-center justify-center flex-shrink-0">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+              {/* Realistic Team Photography */}
+              <div className="relative h-52 w-full overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+                  alt="Enterprise Engineering Collaboration"
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101A2E] via-[#101A2E]/60 to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-semibold tracking-wider uppercase bg-black/60 text-accent-sky border border-accent-sky/30 backdrop-blur-md">
+                    Engineering Excellence
+                  </span>
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-text-primary mb-1">We're technology-first, business-focused</p>
-                  <p className="text-xs text-text-secondary leading-relaxed">
-                    Our team brings both technical expertise and business understanding to every project. 
-                    We don't just build — we think about how technology can genuinely improve your operations and outcomes.
-                  </p>
+              </div>
+
+              {/* Text Description */}
+              <div className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-indigo to-accent-sky flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-base font-bold text-text-primary mb-1">We're technology-first, business-focused</p>
+                    <p className="text-xs text-text-secondary leading-relaxed">
+                      Our engineering team brings technical precision and commercial strategy to every engagement. 
+                      We don't just deliver code — we architect solutions designed to accelerate operations, lower manual overhead, and drive sustainable growth.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

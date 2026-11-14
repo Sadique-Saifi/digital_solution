@@ -1,28 +1,31 @@
 // ============================================================
-// SITE CONFIGURATION — Update all values here
+// SITE CONFIGURATION — Centralized Brand & Contact Config
 // ============================================================
 
 export const siteConfig = {
   // --- Brand ---
-  agencyName: "NexCore Digital",
-  agencyInitials: "NC",
+  agencyName: "GradVista",
+  agencyInitials: "GV",
   tagline: "Building Smarter Digital Experiences. Automating Business Growth.",
 
   // --- Contact: Google Form ---
-  // Replace with your actual Google Form URL
   googleFormUrl:
     "https://docs.google.com/forms/d/e/1FAIpQLSe0_Jzvlw3LgfiRBjoBIJH8qj3WqtWR16rAAPXKgdpvi6TuJg/viewform?usp=dialog",
 
   // --- Contact: WhatsApp ---
-  // Format: country code + number, no +, spaces, brackets, or hyphens
-  // Example for India: 91XXXXXXXXXX
-  whatsappNumber: "91XXXXXXXXXX",
+  // Format: country code + number, no +, spaces, brackets, or hyphens (India: 91 + 10 digits)
+  whatsappNumber: "919286632415",
+  displayPhone: "+91 92866 32415",
 
   whatsappMessage:
-    "Hello! I visited your website and would like to discuss a project. Could you please share more details about your services?",
+    "Hello! I visited your website and would like to discuss a project with GradVista. Could you please share more details about your services?",
 
   // --- Contact: Email ---
-  email: "hello@nexcoredigital.com",
+  email: "info@gradvista.in",
+
+  // --- Office / Campus Address ---
+  address: "ABES Engineering College, Ghaziabad, UP, India",
+  location: "Ghaziabad, Uttar Pradesh, India",
 
   // --- Social Media (leave blank to hide) ---
   social: {
@@ -33,7 +36,7 @@ export const siteConfig = {
   },
 
   // --- SEO ---
-  seoTitle: "NexCore Digital — AI Automation & Web Development Agency",
+  seoTitle: "GradVista — AI Automation & Web Development Agency",
   seoDescription:
     "We help businesses grow through professional websites, AI-powered automation, custom software, and data analytics. Your digital transformation partner.",
 };
